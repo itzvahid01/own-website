@@ -1,0 +1,137 @@
+body {
+    background-color: #161616;
+    margin: 0px;
+    margin-right: 10vw;
+    margin-left: 10vw;
+    font-family: 'B Koodak';
+}
+.logo{padding-right: 10vw;width: 5vw;}
+*{
+    margin: 0px;
+    padding: 0px;
+}
+a{
+ color: #161616;
+}
+li{
+    list-style: none;
+}
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+}
+.post{
+    display: inline-block;
+    align-content: center;
+    text-align: center;
+    font-size: 2vw;
+    font-weight: 900;
+    color: #7e8588;
+    width: 19.75vw;
+    height: 15vw;
+    background-color: rgba(92, 7, 64, 0.2);
+    border: 0.125vw solid rgba(92, 7, 64, 0.4);
+    transition: 0.75s;
+}
+.post:hover{
+    background-color: rgba(92, 7, 64, 0.7);
+}
+.titr{
+    margin-top: 2vw;
+    margin-bottom: 10vw;
+    font-size: 4vw;
+    width: 80vw;
+    height: 1vh;
+    text-align: center;
+    color: white;
+}
+.text{
+    text-align: right;
+    color: rgb(129, 129, 129);
+}
+.back-div{
+    display: flex;
+    margin-top: 2vw;
+    justify-content: center;
+    width: 80vw;
+    height: 4vw;
+}
+.back{
+    display: block;
+    width: 2.5vw;
+    height: 2.5vw;
+    background-image: url('svg/back.svg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    text-align: center;
+    text-decoration: none;
+    transition: 1s;
+}
+.back:hover{
+    transform: scale(1.2);
+}
+.cmns{
+    text-align: right;
+}
+.cmn{
+    color: rgb(99, 50, 83);
+}
+.cmn-form{
+    text-align: center;
+}
+textarea,input{
+    padding: 0.5vw;
+    text-align: right;
+    color: #7e8588;
+    background-color: rgb(91, 30, 97,0.1);
+    border: 0.1vw solid rgba(114, 14, 114,0.5);
+}
+textarea:focus,input{
+    color: white;
+    border: 0.1vw solid rgba(114, 14, 114,1);
+    outline: none;
+}
+.submit{
+    font-size: large;
+    color: rgb(112, 91, 111);
+    padding: 1vw;
+    background-color: rgba(92, 7, 64, 0.3);
+    border: rgba(92, 7, 64, 0.8) solid 0.1vw;
+    transition: 0.5s;
+}
+.submit:hover{
+    color:rgb(151, 144, 151) ;
+    background-color: rgba(92, 7, 64, 0.1);
+    cursor: pointer;
+}
+.menu{
+    list-style-type: none;
+    margin-bottom: 1vw;
+    overflow: hidden;
+    background-color: #272727;
+}
+.option{
+    font-size: 1.5vw;
+    color: white;
+    align-content: center;
+    text-align: center;
+    justify-content: center;
+    float: right;
+    width: 5vw;
+    height: 5vw;
+    transition: 0.2s;
+}
+.option:hover{
+    background-color: #383838;
+}
+.auth-box{
+    color: rgb(116, 116, 116);
+    font-size: 1vw;
+    text-align: center;
+    width: 20vw;
+    background-color: rgba(114, 14, 114,0.1);
+    border: 0.1vw solid rgba(114, 14, 114,0.5);
+    margin-left:30vw;
+    margin-top:5vw;
+}

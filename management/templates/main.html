@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% block meta %}{% endblock %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel = "stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <header>
+        <ul class="menu">
+            <li class="option"><img class="logo" src="{% static 'svg\earth.svg' %}"></li>
+            <a href={% url "home" %}><li class="option" href="google.com">رزومه</li></a>
+            <a href={% url "blog" %}><li class="option">وبلاگ</li></a>
+            {% if Flag == 'True' %}
+                <a href={% url "logout" %}><li class="option" style="float:left;">{{ user }}</li></a>
+            {% else %}
+                <a href={% url "login" %}><li class="option" style="float:left;">ورود</li></a>
+            {% endif %}
+        </ul>
+    </header>
+    {% block content %}{% endblock %}
+</body>
+</html>

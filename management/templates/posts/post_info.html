@@ -1,0 +1,23 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block title %}{{ post.title }}{% endblock %}
+
+
+{% block meta %}{% endblock %}
+
+
+{% block content %}
+<h1 class="titr">{{ post.title }}</h1><p class="text"> {{ post.content }}</p><div class="back-div"><a href={% url "blog" %} class="back"></a></div>
+<div class="cmns">
+    {% for comment in comments %}
+        <p class="cmn">{{ comment.text }}</p>
+    {% endfor %}
+</div>
+<form method="POST" class="cmn-form">
+    {% csrf_token %}
+    {{ form.as_div }}
+    <input type="submit" class="submit" value="ثبت">
+</form>
+{% endblock %}

@@ -1,0 +1,19 @@
+{% extends "main.html" %}
+{% load static %}
+
+
+{% block title %}My Blog{% endblock  %}
+
+{% block meta %}{% endblock %}
+{% block content %}
+
+<ul class="posts">
+    {% for post in posts %}
+    <a href= "{% url 'blog' %}{{ post.id }}">
+        <li class="post">
+        {{ post.title }}
+        </li>
+    </a>
+    {% endfor %}
+</ul>
+{% endblock  %}
