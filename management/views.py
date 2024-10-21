@@ -1,4 +1,4 @@
-from django.shortcuts import render , HttpResponse,loader
+from django.shortcuts import render ,redirect
 from .models import Post,Comment
 from .forms import CommentForm,LoginForm
 from django.contrib.auth import login,authenticate,logout
@@ -17,6 +17,11 @@ def post_list(request):
     context.update({'posts' : posts}) 
     return render(request,'posts/post_list.html',context=context)
 
+
+@login_required(redirect_field_name='login')
+def admin_panel(request):
+    context = check_login(request)
+    return render(request,'admin/admin_panel.html',context=context)
 
 def post_details(request,post_id):
     context= check_login(request)
@@ -43,6 +48,7 @@ def user_login(request):
         password = request.POST.get('password')
         user = authenticate(request=request,username=username,password=password)
         login(request=request,user=user)
+        return redirect('home')
     return render(request,'auth/login.html',context)
 def user_logout(request):
     logout(request)

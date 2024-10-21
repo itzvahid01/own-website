@@ -73,12 +73,25 @@ li{
 }
 .cmns{
     text-align: right;
+    border: 0.15vw solid rgba(99, 50, 83,0.5);
+    border-radius: 0.5vw;
 }
 .cmn{
+    padding: 1vw;
     color: rgb(99, 50, 83);
+    border-bottom: 0.1vw solid rgba(99, 50, 83,0.3);
+    transition: 1s;
+}
+.cmn:hover{
+    border-right: 0.2vw solid rgba(99, 50, 83,0.5);
 }
 .cmn-form{
     text-align: center;
+}
+.cmnt-title{
+    text-align: center;
+    color: beige;
+    font-size: 2vw;
 }
 textarea,input{
     padding: 0.5vw;

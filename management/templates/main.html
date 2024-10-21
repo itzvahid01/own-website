@@ -16,6 +16,7 @@
             <a href={% url "blog" %}><li class="option">وبلاگ</li></a>
             {% if Flag == 'True' %}
                 <a href={% url "logout" %}><li class="option" style="float:left;">{{ user }}</li></a>
+                <a href={% url "admin_panel" %}><li class="option" style="float:left;"> مدیریت</li></a>
             {% else %}
                 <a href={% url "login" %}><li class="option" style="float:left;">ورود</li></a>
             {% endif %}
