@@ -5,6 +5,9 @@
         input {
             margin-bottom:5vw;
         }
+        .flag{
+            text-align: center;
+        }
     </style>
 {% endblock %}
 {% block content %}
@@ -13,6 +16,9 @@
         {% csrf_token %}
         {{ form.as_div }}
         <input type="submit" class="submit">
+        <div class="flag">
+        {{ flag }}
+    </div>
     </div>
 </form>
 {% endblock  %}

@@ -1,6 +1,6 @@
 from django.shortcuts import render ,redirect
 from .models import Post,Comment
-from .forms import CommentForm,LoginForm
+from .forms import CommentForm,LoginForm,PostForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -21,6 +21,12 @@ def post_list(request):
 @login_required(redirect_field_name='login')
 def admin_panel(request):
     context = check_login(request)
+    form = PostForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            data = form.cleaned_data
+            form.save()
+    context.update({'form':form})
     return render(request,'admin/admin_panel.html',context=context)
 
 def post_details(request,post_id):
@@ -42,12 +48,17 @@ def index(request):
 
 def user_login(request):
     form = LoginForm(request.POST)
-    context = {'form' : form}
+    context = {'form' : form,'flag':''}
     if request.method == 'POST':
         username = request.POST.get('username')
         password = request.POST.get('password')
         user = authenticate(request=request,username=username,password=password)
-        login(request=request,user=user)
+        try :
+            login(request=request,user=user)
+            context = {'form' : form,'flag':'successed'}
+        except :
+            context = {'form' : form,'flag':'failed'}
+            return render(request,'auth/login.html',context)
         return redirect('home')
     return render(request,'auth/login.html',context)
 def user_logout(request):

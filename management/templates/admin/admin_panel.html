@@ -1,2 +1,21 @@
 {% extends "main.html" %}
 {% load static %}
+{% block meta %}
+    <style>
+        .first-div{
+            width: 80vw;
+            height: 25vw;
+            border: 0.15VW solid rgba(114, 14, 114,0.8);
+            background-color: rgba(114, 14, 114,0.2);
+        }
+    </style>
+{% endblock %}
+{% block content %}
+<form method='POST' action="">
+    <div class="first-div">
+        {% csrf_token %}
+        {{ form.as_div }}
+        <input type="submit" class="submit">
+    </div>
+</form>
+{% endblock %}
