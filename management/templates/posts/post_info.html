@@ -11,6 +11,7 @@
 {% block content %}
 <h1 class="titr">{{ post.title }}</h1><p class="text"> {{ post.content }}</p><div class="back-div"><a href={% url "blog" %} class="back"></a></div>
 <div class="cmns">
+    <p class="cmnt-title">نظرات</p>
     {% for comment in comments %}
         <p class="cmn">{{ comment.text }}</p>
     {% endfor %}
