@@ -4,6 +4,9 @@ from .forms import CommentForm,LoginForm,PostForm
 from django.contrib.auth import login,authenticate,logout
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
+from rest_framework.views import Response
+from rest_framework import status
+from rest_framework.decorators import api_view
 def check_login(request):
     context = {'Flag' : 'False'}
     if request.user.is_authenticated:
@@ -17,17 +20,6 @@ def post_list(request):
     context.update({'posts' : posts}) 
     return render(request,'posts/post_list.html',context=context)
 
-
-@login_required(redirect_field_name='login')
-def admin_panel(request):
-    context = check_login(request)
-    form = PostForm(request.POST)
-    if request.method == 'POST':
-        if form.is_valid():
-            data = form.cleaned_data
-            form.save()
-    context.update({'form':form})
-    return render(request,'admin/admin_panel.html',context=context)
 
 def post_details(request,post_id):
     context= check_login(request)
@@ -65,3 +57,21 @@ def user_logout(request):
     logout(request)
     context= check_login(request)
     return render(request,'home/index.html',context=context)
+#____________________________________________ admin ____________________________________________
+@login_required(redirect_field_name='login')
+def admin_panel(request):
+    context = check_login(request)
+    form = PostForm(request.POST)
+    if request.method == 'POST':
+        if form.is_valid():
+            data = form.cleaned_data
+            form.save()
+    context.update({'form':form})
+    return render(request,'admin/admin_panel.html',context=context)
+
+#_____________________________________________ api _____________________________________________
+@api_view(['post'])
+def create_post(request):
+    data = request.data
+    create = Post.objects.create(title = data.get('title'),content = data.get('content'))
+    return Response(status=status.HTTP_201_CREATED)
